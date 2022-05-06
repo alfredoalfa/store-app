@@ -1,0 +1,30 @@
+<!--
+<ion-header>
+  <ion-toolbar>
+    <ion-title>title</ion-title>
+  </ion-toolbar>
+</ion-header>
+-->
+<ion-content (click)="dismiss()">
+
+</ion-content>
+<ion-footer no-border>
+    <div class="form">
+        <ion-list lines="none">
+            <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                <ion-icon class="zmdi zmdi-badge-check" slot="start"></ion-icon>
+                <ion-label mode="md" position="stacked">{{"address_title" | translate}}</ion-label>
+                <ion-input mode="md" type="name" placeholder="{{'enter_address_title' | translate}}"></ion-input>
+            </ion-item>
+
+            <ion-item class="address animate__animated animate__fadeInUp" lines="none">
+                <div class="item_inner d-flex">
+                    <ion-icon class="zmdi zmdi-pin"></ion-icon>
+                    <p>1124, Patestine Street, Jackson Tower, Near City Garden, New York, USA</p>
+                </div>
+            </ion-item>
+
+            <ion-button size="large" shape="full" class="btn animate__animated animate__fadeInUp" (click)="dismiss()">{{'save_address' | translate}}</ion-button>
+        </ion-list>
+    </div>
+</ion-footer>

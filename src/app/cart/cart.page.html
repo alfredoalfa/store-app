@@ -1,0 +1,62 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<!-- <ion-menu-button></ion-menu-button> -->
+			<ion-back-button text="" icon="chevron-back-outline" defaultHref="home"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			{{'your_cart' | translate}}
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen *ngIf="show">
+	<ion-list lines="none" *ngFor="let item of itemsList">
+
+		<ion-item class="animate__animated animate__fadeInUp">
+			<div class="item_inner d-flex">
+				<div class="img_box center_img">
+					<img [src]="item['file_data']" class="crop_img">
+				</div>
+				<div class="text_box">
+					<h2>{{item['name']}}</h2>
+					<h3>{{item['description']}}</h3>
+					<h4 class="d-flex">
+						<span class="add_remove_btn">
+							<small class="remove" (click)="removeItem(item)">-</small>
+							<strong class="ion-text-center">{{item['numerOfItems']}}</strong>
+							<small class="add" (click)="addItem(item)">+</small>
+						</span>
+						<span class="end">€ {{item['price']}}</span>
+					</h4>
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+</ion-content>
+
+<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+	<div class="form">
+		<!-- <ion-item class="animate__animated animate__fadeInUp" lines="none">
+			<ion-input mode="md" type="name" placeholder="{{'add_promocode' | translate}}"></ion-input>
+			<h3 slot="end">{{'apply' | translate}}</h3>
+		</ion-item> -->
+		<ion-item class="animate__animated animate__fadeInUp" lines="none">
+			<ion-input mode="md" type="name" placeholder="Gastos"></ion-input>
+			<h3 slot="end">Monto</h3>
+		</ion-item>
+		<div class="payment_details">
+			<h3 class="d-flex animate__animated animate__fadeInUp">{{'cart_total' | translate}} <span class="end">€ {{total}}</span></h3>
+			<!-- <h3 class="d-flex animate__animated animate__fadeInUp">{{'delivery_fee' | translate}} <span class="end">$ 8.00</span></h3>
+			<h3 class="d-flex animate__animated animate__fadeInUp">{{'promocode' | translate}} <span class="end">- $ 10.00</span></h3> -->
+		</div>
+		<h2 class="d-flex animate__animated animate__fadeInUp" (click)="select_address()">
+			{{'checkout_now' | translate}}
+			<span class="end">
+				<small class="ion-text-start">{{'total' | translate}}</small>
+				€ {{total}}
+				<ion-icon class="zmdi zmdi-chevron-right ion-text-end"></ion-icon>
+			</span>
+		</h2>
+	</div>
+</ion-footer>

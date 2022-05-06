@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Servicios</string>
+    <string name="title_activity_main">Servicios</string>
+    <string name="package_name">es.services.app</string>
+    <string name="custom_url_scheme">es.services.app</string>
+</resources>

@@ -1,0 +1,377 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="title_inner d-flex">
+                <h3 class="end">
+                    <span class="end cart_icon" (click)="cart()">
+                        <ion-icon class="zmdi zmdi-mall ion-text-start"></ion-icon>
+                        <ion-badge>2</ion-badge>
+                    </span>
+                </h3>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-color" *ngIf="show">
+    <div class="banner">
+        <h3 [ngClass]="FavoriteIcon ? 'active' : ''" (click)="toggleFavoriteIcon()">
+            <ion-icon class="zmdi zmdi-favorite-outline"></ion-icon>
+            <ion-icon class="zmdi zmdi-favorite"></ion-icon>
+        </h3>
+
+        <ion-slides pager="true" loop="true">
+            <ion-slide>
+                <div class="img_box center_img animate__animated animate__zoomIn" style="--animate-duration: .2s;">
+                    <img [src]="productDetail['file_data']" class="crop_img">
+                </div>
+            </ion-slide>
+            <!-- <ion-slide>
+                <div class="img_box center_img animate__animated animate__zoomIn" style="--animate-duration: .2s;">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="img_box center_img animate__animated animate__zoomIn" style="--animate-duration: .2s;">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="img_box center_img animate__animated animate__zoomIn" style="--animate-duration: .2s;">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="img_box center_img animate__animated animate__zoomIn" style="--animate-duration: .2s;">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+            </ion-slide> -->
+        </ion-slides>
+    </div>
+
+    <div class="item_details">
+        <h2 class="animate__animated animate__fadeInUp">{{productDetail['name']}}</h2>
+        <h3 class="d-flex animate__animated animate__fadeInUp">
+            Codigo {{productDetail['barcode']}}
+            <ion-badge class="end">
+                4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+            </ion-badge>
+        </h3>
+        <h4 class="d-flex animate__animated animate__fadeInUp">
+            {{productDetail['price']}}€
+            <span class="end" (click)="reviews()">{{'read_all' | translate}} 124 {{'reviews' | translate}}
+                <ion-icon class="zmdi zmdi-chevron-right ion-text-end"></ion-icon>
+            </span>
+        </h4>
+        <p class="animate__animated animate__fadeInUp">{{productDetail['description']}} </p>
+    </div>
+    <ion-button size="large" shape="full" class="btn animate__animated animate__fadeInUp" (click)="addToCard(productDetail['id'])">
+        <ion-icon class="zmdi zmdi-mall ion-text-start"></ion-icon>
+        {{'add_to_cart' | translate}}
+    </ion-button>
+
+    <!-- <div class="more_by_seller animate__animated animate__fadeInUp">
+        <h2 class="d-flex" (click)="seller_info()">{{'more_by' | translate}} &nbsp;<strong>{{'seller' | translate}}</strong><span class="end ">{{'view_all' | translate}}</span></h2>
+        <div class="items_row">
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>20 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>20 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>20 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>20 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>20 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>20 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>20 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_8.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Potato</h3>
+                    <h4>1 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$35.00</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_6.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Green Beans</h3>
+                    <h4>20 Kgs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$42.00</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item_img center_img animate__animated animate__zoomIn">
+                    <img src="assets/images/item_7.png" class="crop_img">
+                </div>
+                <div class="item_details">
+                    <h3>Fresh Ladies finger</h3>
+                    <h4>2 KGs</h4>
+                    <h5 class="d-flex">
+                        <span class="price">$30.00</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</ion-content>

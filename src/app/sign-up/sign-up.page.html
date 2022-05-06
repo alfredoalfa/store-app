@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{'register' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="form">
+        <form [formGroup]="onRegisterForm">
+
+            <ion-list lines="none">
+                <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                    <ion-label mode="md" position="stacked">{{"full_name" | translate}}</ion-label>
+                    <ion-input mode="md" type="name" placeholder="{{'full_name' | translate}}" formControlName="name">
+                    </ion-input>
+                </ion-item>
+                <p ion-text class="text08"
+                    *ngIf="onRegisterForm.get('name').touched && onRegisterForm.get('name').hasError('required')">
+                    <ion-text color="danger" style="color: wheat !important;">
+                        {{ 'enter_full_name' | translate }}
+                    </ion-text>
+                </p>
+            </ion-list>
+
+            <ion-list lines="none">
+                <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                    <ion-label mode="md" position="stacked">{{"email_address" | translate}}</ion-label>
+                    <ion-input mode="md"  type="email" placeholder="{{'email_address' | translate}}" formControlName="email">
+                    </ion-input>
+                </ion-item>
+                <p ion-text class="text08"
+                    *ngIf="onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">
+                    <ion-text color="danger" style="color: wheat !important;">
+                        {{ 'enter_email_address' | translate }}
+                    </ion-text>
+                </p>
+            </ion-list>
+
+            <ion-list lines="none">
+                <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                    <ion-label mode="md" position="stacked">{{"password" | translate}}</ion-label>
+                    <ion-input mode="md" type="password" placeholder="{{'enter_password' | translate}}" formControlName="password">
+                    </ion-input>
+                </ion-item>
+                <p ion-text color="danger" class="text08"
+                    *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">
+                    <ion-text color="danger" style="color: wheat !important;">
+                        {{ 'enter_password' | translate }}
+                    </ion-text>
+                </p>
+            </ion-list>
+
+            <ion-list lines="none">
+                <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                    <ion-label mode="md" position="stacked">{{"password" | translate}}</ion-label>
+                    <ion-input mode="md"type="password" placeholder="{{'enter_password' | translate}}" formControlName="password_confirmation">
+                    </ion-input>
+                </ion-item>
+                <p ion-text color="danger" class="text08"
+                    *ngIf="onRegisterForm.get('password_confirmation').touched && onRegisterForm.get('password_confirmation').hasError('required')">
+                    <ion-text color="danger" style="color: wheat !important;">
+                        {{ 'enter_password' | translate }}
+                    </ion-text>
+                </p>
+            </ion-list>
+
+        </form>
+    </div>
+
+</ion-content>
+
+<ion-footer class="ion-mo-border animate__animated animate__fadeInUp">
+    <ion-button size="large" expand="full" class="btn" (click)="verification()">{{'continue' | translate}}</ion-button>
+</ion-footer>

@@ -1,0 +1,64 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-title>
+            {{'confirm_order' | translate}}
+        </ion-title>
+    </ion-toolbar>
+    <div class="order_steps">
+        <ion-row>
+            <ion-col class="animate__animated animate__slideInLeft active">
+                <ion-icon class="zmdi zmdi-pin"></ion-icon>
+            </ion-col>
+            <ion-col class="animate__animated animate__slideInLeft active">
+                <h3>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                </h3>
+            </ion-col>
+            <ion-col class="animate__animated animate__slideInLeft active">
+                <ion-icon class="zmdi zmdi-card"></ion-icon>
+            </ion-col>
+            <ion-col class="animate__animated animate__slideInLeft active">
+                <h3>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                    <ion-icon class="zmdi zmdi-circle"></ion-icon>
+                </h3>
+            </ion-col>
+            <ion-col class="animate__animated animate__slideInLeft active">
+                <ion-icon class="zmdi zmdi-assignment-check"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-header>
+
+<ion-content>
+    <div class="container ion-text-center">
+        <div class="img_box">
+            <img src="assets/images/order_confirm.png">
+        </div>
+        <div class="text_box">
+            <h2 class="animate__animated animate__fadeInUp">
+                <span class="animate__animated animate__fadeInUp">{{'your_order_has_been' | translate}}</span>
+                <br>
+                <span class="animate__animated animate__fadeInUp">{{'placed_successfully' | translate}}</span>
+            </h2>
+            <p class="animate__animated animate__fadeInUp">
+                <span class="animate__animated animate__fadeInUp"> {{'you_cant_check_your_order_process_in_my' | translate}}</span>
+                <br>
+                <span class="animate__animated animate__fadeInUp"> {{'orders_section' | translate}}</span>
+            </p>
+            <h3 class="animate__animated animate__fadeInUp" (click)="my_orders()">{{'my_orders' | translate}}</h3>
+        </div>
+    </div>
+</ion-content>
+<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+    <ion-button size="large" shape="full" class="btn" (click)="home()"> {{'conitnue_shopping' | translate}} </ion-button>
+</ion-footer>

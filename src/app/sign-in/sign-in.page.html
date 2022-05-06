@@ -1,0 +1,43 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title class="ion-text-center">{{'welcome_to' | translate}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="banner">
+		<div class="logo animate__animated animate__zoomIn">
+			<img src="assets/images/userlogo.png">
+		</div>
+	</div>
+	<div class="form">
+		<ion-list lines="none">
+			<ion-item class="animate__animated animate__fadeInUp" lines="none">
+				<ion-label mode="md" position="stacked">{{"correo" | translate}}</ion-label>
+				<ion-input type="email" placeholder="Email" name="email" [(ngModel)]="credentials.email"></ion-input>
+			</ion-item>
+			<ion-item class="animate__animated animate__fadeInUp" lines="none">
+				<ion-label mode="md" position="stacked">{{"clave" | translate}}</ion-label>
+				<ion-input type="password" placeholder="Password" name="password" [(ngModel)]="credentials.password"></ion-input>
+			</ion-item>
+		</ion-list>
+	</div>
+	<ion-button size="large" expand="full" class="btn animate__animated animate__fadeInUp" (click)="login()">{{'continue' | translate}}</ion-button>
+	<ion-button size="large" expand="full" class="btn animate__animated animate__fadeInUp" (click)="register()">{{'register' | translate}}</ion-button>
+	<!-- <p class="ion-text-center animate__animated animate__fadeInUp">{{"we_ll_send_otp_for_vefification" | translate}}</p> -->
+</ion-content>
+
+<ion-footer class="ion-no-border">
+	<!-- <h2 class="ion-text-center">{{"or_continue_with" | translate}}</h2>
+	<ion-row class="animate__animated animate__fadeInUp">
+		<ion-col size="6">
+			<ion-button size="large" expand="full" class="btn facebook" (click)="new_orders()">{{'facebook' | translate}}
+			</ion-button>
+		</ion-col>
+	
+		<ion-col size="6">
+			<ion-button size="large" expand="full" class="btn google" (click)="new_orders()">{{'google' | translate}}
+			</ion-button>
+		</ion-col>
+	</ion-row> -->
+</ion-footer>

@@ -1,0 +1,736 @@
+<ion-header>
+	<ion-toolbar class="animate__animated animate__fadeInUp" style="--animate-duration: .3s;">
+		<ion-buttons slot="start">
+			<!-- <ion-button expand="block" (click)="openEnd()">Open Menu</ion-button> -->
+			<ion-menu-button auto-hide="false" (click)="openEnd()"></ion-menu-button>
+		</ion-buttons>
+		<ion-title>
+			<div class="title_inner d-flex">
+				<h2 (click)="search()">{{'search_on_shophour' | translate}}</h2>
+
+				<span class="end cart_icon" (click)="cart()">
+					<ion-icon class="zmdi zmdi-mall ion-text-start"></ion-icon>
+					<ion-badge>2</ion-badge>
+				</span>
+			</div>
+		</ion-title>
+	</ion-toolbar>
+
+	<div class="category_row animate__animated animate__fadeInUp" style="--animate-duration: .4s;">
+		<div class="category animate__animated animate__zoomIn fashion" *ngFor='let category of listCategory; let i = index;'>
+			<div class="img_box center_img" [routerLink]="['/item/', category.id]">
+				<img [src]="category.file_data" class="crop_img">
+			</div>
+		</div>
+	</div>
+</ion-header>
+
+<ion-content fullscreen>
+	<div class="banner animate__animated animate__fadeInUp" style="--animate-duration: .3s;">
+		<ion-slides pager="true" loop="true">
+			<ion-slide>
+				<div class="img_box center_img">
+					<img src="assets/images/Banner1.png" class="crop_img">
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class="img_box center_img">
+					<img src="assets/images/banner.png" class="crop_img">
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class="img_box center_img">
+					<img src="assets/images/Banner1.png" class="crop_img">
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class="img_box center_img">
+					<img src="assets/images/banner.png" class="crop_img">
+				</div>
+			</ion-slide>
+		</ion-slides>
+	</div>
+
+	<div class="items_container animate__animated animate__fadeInUp">
+		<h2>Promociones</h2>
+		<div class="items_row">
+			<div class="item" *ngFor='let category of listPromotions; let i = index;'>
+				<div (click)="item_details(category.id)">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img [src]="category.file_data"  class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>{{category.name}}</h3>
+					<h4>{{category.name_dept}}</h4>
+					<h5 class="d-flex">
+						<span class="price">€{{category.pricepromo}}</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+		</div>
+		
+		</div>
+	</div>
+
+	<!-- <div class="items_container animate__animated animate__fadeInUp">
+		<h2>Vegetables Near You</h2>
+		<div class="items_row">
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_8.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Potato</h3>
+					<h4>1 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Green Beans</h3>
+					<h4>20 Kgs</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_7.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Ladies finger</h3>
+					<h4>2 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+		</div>
+	</div> -->
+
+	<!-- <div class="items_container animate__animated animate__fadeInUp">
+		<h2>Featured Products</h2>
+		<div class="items_row">
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_4.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Conliflwer</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Garlic</h3>
+					<h4>Operun England</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/1.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Onions</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/2.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Tomatoes</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$44.00</span>
+						<ion-badge class="end">
+							3.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/1.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Onions</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/2.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Tomatoes</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$44.00</span>
+						<ion-badge class="end">
+							3.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Garlic</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/1.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Onions</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/2.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Tomatoes</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$44.00</span>
+						<ion-badge class="end">
+							3.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Garlic</h3>
+					<h4>Operun England</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- <div class="items_container animate__animated animate__fadeInUp">
+		<h2>Recent Searches</h2>
+		<div class="items_row">
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/1.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Onions</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/2.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Tomatoes</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$44.00</span>
+						<ion-badge class="end">
+							3.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Garlic</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Garlic</h3>
+					<h4>Operun England</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/1.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Onions</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$30.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/2.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Red Tomatoes</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$44.00</span>
+						<ion-badge class="end">
+							3.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Garlic</h3>
+					<h4>20 KGs</h4>
+					<h5 class="d-flex">
+						<span class="price">$35.00</span>
+						<ion-badge class="end">
+							3.7 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+			<div class="item" (click)="item_details()">
+				<div class="item_img center_img animate__animated animate__zoomIn">
+					<img src="assets/images/item_6.png" class="crop_img">
+				</div>
+				<div class="item_details">
+					<h3>Fresh Garlic</h3>
+					<h4>Operun England</h4>
+					<h5 class="d-flex">
+						<span class="price">$42.00</span>
+						<ion-badge class="end">
+							4.2 <ion-icon class="zmdi zmdi-star"></ion-icon>
+						</ion-badge>
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</ion-content>

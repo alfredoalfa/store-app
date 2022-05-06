@@ -1,0 +1,56 @@
+<ion-app [dir]="rtlSide">
+    <ion-split-pane contentId="main-content">
+        <ion-menu contentId="main-content" type="overlay" menuId="first">
+            <ion-header>
+                <div class="profile_box">
+                    <h2>
+                        <span class="animate__animated animate__fadeInUp">{{"hey" | translate}},</span>
+                        <!-- <span class="animate__animated animate__fadeInUp first_name">Operum</span>
+                        <span class="animate__animated animate__fadeInUp last_name">England</span> -->
+                    </h2>
+                </div>
+
+                <!-- <div class="buy_this_app" *ngIf="config.demoMode" (click)="buyappalert()">
+                    <ion-menu-toggle auto-hide="false">
+                        <h2>
+                            <ion-icon class="zmdi zmdi-shopping-cart"></ion-icon>
+                            {{"buy_this_app" | translate}}
+                        </h2>
+                    </ion-menu-toggle>
+                </div> -->
+            </ion-header>
+            <ion-content fullscreen>
+                <ion-list lines="none">
+                    <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages" class="animate__animated animate__fadeInUp">
+                        <ion-item mode="ios" detail="false" [routerDirection]="'root'" [routerLink]="[p.url]">
+                            <div class="item_inner d-flex">
+                                <ion-icon slot="start" [class]="p.icon"></ion-icon>
+                                <h2>{{ p.title | translate}}</h2>
+                            </div>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false" class="animate__animated animate__fadeInUp">
+                        <ion-item mode="ios" detail="false" (click)="logOut()">
+                            <div class="item_inner d-flex">
+                                <ion-icon slot="start" class="zmdi zmdi-open-in-new"></ion-icon>
+                                <h2>logout</h2>
+                            </div>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+
+            <ion-footer class="ion-no-border" *ngIf="config.demoMode">
+                <ion-menu-toggle auto-hide="false">
+                    <!-- <div class="developed_by d-flex" (click)="developed_by()">
+                        <h2>{{"developed_by" | translate}}</h2>
+                        <div class="img_box ion-text-end end">
+                            <img src="assets/images/opus.png" class="light-theme-logo">
+                        </div>
+                    </div> -->
+                </ion-menu-toggle>
+            </ion-footer>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

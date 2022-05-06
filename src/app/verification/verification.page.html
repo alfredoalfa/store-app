@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{'verification' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+    <div class="form">
+        <p class="ion-text-center">
+            <span class="animate__animated animate__fadeInUp">{{'verification_text1' | translate}}</span>
+            <br>
+            <span class="animate__animated animate__fadeInUp"> {{'verification_text2' | translate}}</span>
+        </p>
+        <ion-list lines="none">
+            <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                <ion-label mode="md" position="stacked">{{"enter_verification_code" | translate}}</ion-label>
+                <ion-input mode="md" type="number" placeholder="{{'enter_verification_code' | translate}}"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <ion-button size="large" expand="full" class="btn animate__animated animate__fadeInUp" (click)="home()">{{'verify' | translate}}</ion-button>
+</ion-footer>

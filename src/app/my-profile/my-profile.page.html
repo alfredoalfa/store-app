@@ -1,0 +1,75 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			{{'my_account' | translate}}
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color" fullscreen>
+	<form [formGroup]="userInfoForm">
+	<ion-card>
+		<div class="form">
+			<h2>{{'my_profile' | translate}}</h2>
+			<ion-list lines="none">
+				<ion-item class="animate__animated animate__fadeInUp" lines="none">
+					<ion-label mode="md" position="stacked">{{"full_name" | translate}}</ion-label>
+					<ion-input mode="md" type="name" formControlName="fullname" id="fullname"></ion-input>
+				</ion-item>
+
+				<ion-item class="animate__animated animate__fadeInUp" lines="none">
+					<ion-label mode="md" position="stacked">{{"email_address" | translate}}</ion-label>
+					<ion-input mode="md" type="email" value="samanthasmith@mail.com" formControlName="email" id="email"  readonly="true"></ion-input>
+				</ion-item>
+
+				<ion-item class="animate__animated animate__fadeInUp" lines="none">
+					<ion-label mode="md" position="stacked">{{"phone_number" | translate}}</ion-label>
+					<ion-input mode="md" type="text" formControlName="phone" id="phone" ></ion-input>
+				</ion-item>
+
+			</ion-list>
+		</div>
+	</ion-card>
+	<ion-card class="my_addresses">
+		<div class="form">
+			<h2>{{'my_addresses' | translate}}</h2>
+			<ion-list lines="none">
+				<ion-item class="animate__animated animate__fadeInUp">
+					<div class="item_inner">
+						<div class="text_box">
+							<h3 class="d-flex">Principal <ion-icon class="zmdi zmdi-edit ion-text-end end"></ion-icon>
+							</h3>
+							<ion-textarea mode="md" type="text" formControlName="homeaddress" id="homeaddress" auto-grow="true"></ion-textarea>
+						</div>
+					</div>
+				</ion-item>
+				<ion-item class="animate__animated animate__fadeInUp">
+					<div class="item_inner">
+						<div class="text_box">
+							<h3 class="d-flex">Oficina <ion-icon class="zmdi zmdi-edit ion-text-end end"></ion-icon>
+							</h3>
+							<ion-textarea mode="md" type="text" formControlName="officeaddress" id="officeaddress" auto-grow="true"></ion-textarea>
+						</div>
+					</div>
+				</ion-item>
+				<ion-item class="animate__animated animate__fadeInUp">
+					<div class="item_inner">
+						<div class="text_box">
+							<h3 class="d-flex">Otra <ion-icon class="zmdi zmdi-edit ion-text-end end"></ion-icon>
+							</h3>
+							<ion-textarea mode="md" type="text" formControlName="otheraddress" id="otheraddress" auto-grow="true"></ion-textarea>
+						</div>
+					</div>
+				</ion-item>
+			</ion-list>
+		</div>
+	</ion-card>
+</form>
+</ion-content>
+<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+	<ion-button size="large" shape="full" class="btn" (click)="onSubmit()"> {{'add_address' | translate}} </ion-button>
+</ion-footer>

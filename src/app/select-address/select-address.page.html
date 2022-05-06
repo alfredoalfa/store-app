@@ -1,0 +1,101 @@
+<ion-header class="bg_transparent">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			{{'select_address' | translate}}
+		</ion-title>
+	</ion-toolbar>
+	<div class="order_steps">
+		<ion-row>
+			<ion-col class="animate__animated animate__slideInLeft active">
+				<ion-icon class="zmdi zmdi-pin"></ion-icon>
+			</ion-col>
+			<ion-col class="animate__animated animate__slideInLeft">
+				<h3>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+				</h3>
+			</ion-col>
+			<ion-col class="animate__animated animate__slideInLeft">
+				<ion-icon class="zmdi zmdi-card"></ion-icon>
+			</ion-col>
+			<ion-col class="animate__animated animate__slideInLeft">
+				<h3>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+					<ion-icon class="zmdi zmdi-circle"></ion-icon>
+				</h3>
+			</ion-col>
+			<ion-col class="animate__animated animate__slideInLeft">
+				<ion-icon class="zmdi zmdi-assignment-check"></ion-icon>
+			</ion-col>
+		</ion-row>
+	</div>
+</ion-header>
+
+
+<ion-content >
+	<ion-card>
+		<div class="form">
+<!--			<h2>{{'select_delivery_type' | translate}}</h2>-->
+			<ion-list lines="none">
+				<ion-radio-group  (ionChange)="checkValue($event)">
+					<ion-item class="animate__animated animate__fadeInUp" *ngFor="let address of userAddress">
+						<div class="item_inner d-flex" *ngIf="address.adress !=''">
+							<ion-radio [value]="address.number"></ion-radio>
+							<div class="text_box">
+								<h3 class="d-flex">{{address.name}}</h3>
+								<p>
+									{{address.adress}}
+								</p>
+							</div>
+						</div>
+					</ion-item>
+				</ion-radio-group>
+			</ion-list>
+		</div>
+	</ion-card>
+
+<!--
+	<ion-card class="my_addresses">
+		<div class="form">
+			<h2 class="d-flex">{{'my_addresses' | translate}} <span class="end" (click)="my_profile()">{{'change' | translate}}</span></h2>
+			<ion-list lines="none">
+				<ion-item class="animate__animated animate__fadeInUp">
+					<div class="item_inner">
+						<div class="text_box">
+							<h3 class="d-flex">Home</h3>
+							<p>
+								1124, Patestine Street, Jackson Tower, Near City Garden, New York, USA
+							</p>
+						</div>
+					</div>
+				</ion-item>
+			</ion-list>
+		</div>
+	</ion-card>
+-->
+</ion-content>
+<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+<!--
+	<h2 class="d-flex" (click)="payment_mode()">
+		{{'checkout_now' | translate}}
+		<span class="end">
+			<small class="ion-text-start">{{'total' | translate}}</small>
+			$ 88.00
+			<ion-icon class="zmdi zmdi-chevron-right ion-text-end"></ion-icon>
+		</span>
+	</h2>
+-->
+    
+    <ion-button size="large" shape="full" class="btn" (click)="payment_mode()"> {{'conitnue' | translate}} </ion-button>
+</ion-footer>
